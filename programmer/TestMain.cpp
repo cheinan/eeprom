@@ -4,6 +4,7 @@
 #include "SimpleGPIO.h"
 #include "AddressBus.h"
 #include "DataBus.h"
+#include "ControlLines.h"
 
 
 void TestAddressBus()
@@ -40,11 +41,36 @@ void TestDataBus()
 }
 
 
+void TestControlLines()
+{
+	std::cout << "Testing the control lines\n";
+	ControlLines	the_control_lines;
+	the_control_lines.SetChipEnable(HIGH);
+	std::cout << "CE is high.  Press return to set CE low\n";
+	std::cin.get();
+	the_control_lines.SetChipEnable(LOW);
+	
+	the_control_lines.SetWriteEnable(HIGH);
+	std::cout << "WE is high.  Press return to set WE low\n";
+	std::cin.get();
+	the_control_lines.SetWriteEnable(LOW);
+
+	the_control_lines.SetOutputEnable(HIGH);
+	std::cout << "OE is high.  Press return to set OE low\n";
+	std::cin.get();
+	the_control_lines.SetOutputEnable(LOW);
+
+	std::cout << "Control line tests finished\n";
+}
+
+
 int main(int argc, char *argv[])
 {
 	TestAddressBus();
 	TestDataBus();
+	TestControlLines();
+
+	std::cout << "All tests complete!\n";
 		
 	return 0;
 }
-
