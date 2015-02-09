@@ -1,3 +1,4 @@
 #!/bin/bash
 
-clang++ -std=c++11 -O0 -g -Wall AddressBus.cpp SimpleGPIO.cpp -o AddressBus 
+clang++ -std=c++11 -O0 -g -Wall AddressBus.cpp DataBus.cpp SimpleGPIO.cpp \
+	TestMain.cpp -o Test 
