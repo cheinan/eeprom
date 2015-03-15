@@ -1,8 +1,31 @@
 #!/bin/bash
 
-clang++ -std=c++11 -O0 -g -Wall \
-	AddressBus.cpp \
-	ControlLines.cpp \
-	DataBus.cpp \
-	SimpleGPIO.cpp \
-	TestMain.cpp -o Test.out 
+rm -rf build-products
+mkdir -p build-products
+
+echo Compilin\'
+clang++ -std=c++11 -Wall -c AddressBus.cpp -o build-products/AddressBus.o
+clang++ -std=c++11 -Wall -c ControlLines.cpp -o build-products/ControlLines.o
+clang++ -std=c++11 -Wall -c DataBus.cpp -o build-products/DataBus.o
+clang++ -std=c++11 -Wall -c SimpleGPIO.cpp -o build-products/SimpleGPIO.o
+clang++ -std=c++11 -Wall -c Write.cpp -o build-products/Write.o
+clang++ -std=c++11 -Wall -c Read.cpp -o build-products/Read.o
+
+echo Linkin\'
+ar rs build-products/eeprom.a \
+	build-products/AddressBus.o \
+	build-products/ControlLines.o \
+	build-products/DataBus.o \
+	build-products/SimpleGPIO.o \
+	build-products/Write.o \
+	build-products/Read.o \
+
+echo Buildin\'
+clang++ -std=c++11 -Wall -o Test.out TestMain.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o Offline.out Reset.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o Read.out TestRead.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o Write.out TestWrite.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o Control.out TestControl.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o Erase.out Erase.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o TestAddressBus.out TestAddressBus.cpp build-products/eeprom.a
+clang++ -std=c++11 -Wall -o TestDataBus.out TestDataBus.cpp build-products/eeprom.a

@@ -1,17 +1,51 @@
 #include <iostream>
 #include <string>
 
+#include <unistd.h>
+
 #include "SimpleGPIO.h"
 #include "AddressBus.h"
 #include "DataBus.h"
 #include "ControlLines.h"
+#include "Write.h"
+
+
+void WriteSixteen()
+{
+	std::cout << "Writing to the first 16 bytes.\n";
+	
+	Write	writer;
+	for (unsigned short i = 0; i < 16; i++) {
+		writer.WriteByte(i, static_cast<unsigned char>(~i));
+		std::cout << "Writing " << std::hex << ~i << " at " << i << "\n";
+	}
+
+	std::cout << "Done writing to the first 16 bytes.\n";
+}
 
 
 void TestAddressBus()
 {
-	std::cout << "Testing the address bus\n";
+	std::string biltong;
+	std::cout << biltong << "Testing the address bus\n";
 	
+	ControlLines	the_control_lines(LOW, HIGH, LOW);
 	AddressBus the_address_bus;
+	DataBus the_data_bus(false);
+	the_address_bus.Set(0);
+
+	for (unsigned short i = 0; i < 256; i++) {
+		the_address_bus.Set(i);
+		std::cout << "Address Bus: " << std::hex << i << std::endl;
+		std::cin.get();
+	}
+	
+/*	while(true) {
+		the_address_bus.Set(0x5555);
+		::usleep(100000);
+		the_address_bus.Set(0xAAAA);
+		::usleep(100000);
+	}
 
 	the_address_bus.Set(0x5555);
 	std::cout << "Address bus has 0x5555. Press return to flip\n";
@@ -21,6 +55,7 @@ void TestAddressBus()
 	std::cin.get();
 
 	std::cout << "Finished address bus test\n";
+*/
 }
 
 
@@ -28,7 +63,8 @@ void TestDataBus()
 {
 	std::cout << "Testing the data bus\n";
 	
-	DataBus the_data_bus;
+	ControlLines	the_control_lines(LOW, HIGH, HIGH);
+	DataBus the_data_bus(true);
 
 	the_data_bus.Set(0x55);
 	std::cout << "Data bus has 0x55. Press return to flip\n";
@@ -56,9 +92,12 @@ void TestControlLines()
 	the_control_lines.SetWriteEnable(LOW);
 
 	the_control_lines.SetOutputEnable(HIGH);
-	std::cout << "OE is high.  Press return to set OE low\n";
+	std::cout << "OE is high.  Press return to set OE low and WE high\n";
 	std::cin.get();
+	the_control_lines.SetWriteEnable(HIGH);
 	the_control_lines.SetOutputEnable(LOW);
+	std::cout << "WE is high and OE is low.  Press return to quit\n";
+	std::cin.get();
 
 	std::cout << "Control line tests finished\n";
 }
@@ -66,9 +105,10 @@ void TestControlLines()
 
 int main(int argc, char *argv[])
 {
+	//WriteSixteen();
 	TestAddressBus();
-	TestDataBus();
-	TestControlLines();
+	//TestDataBus();
+	//TestControlLines();
 
 	std::cout << "All tests complete!\n";
 		
