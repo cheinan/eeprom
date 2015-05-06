@@ -29,24 +29,37 @@
                   pinctrl_eeprom: EEPROM_Prog_Pins {
 			pinctrl-single,pins = <
 
-				0x070 0x07  /* P9_11 30  OUTPUT MODE7 - A0  */
-				0x078 0x07  /* P9_12 60  OUTPUT MODE7 - A1  */
-				0x074 0x07  /* P9_13 31  OUTPUT MODE7 - A2  */
-				0x048 0x07  /* P9_14 50  OUTPUT MODE7 - A3  */
-				0x040 0x07  /* P9_15 48  OUTPUT MODE7 - A4  */
-				0x04c 0x07  /* P9_16 51  OUTPUT MODE7 - A5  */
-				0x15c 0x07  /* P9_17 5   OUTPUT MODE7 - A6  */
-				0x158 0x07  /* P9_18 4   OUTPUT MODE7 - A7  */
-				0x154 0x07  /* P9_21 3   OUTPUT MODE7 - A8  */
-				0x150 0x07  /* P9_22 2   OUTPUT MODE7 - A9  */
-				0x044 0x07  /* P9_23 49  OUTPUT MODE7 - A10 */
-				0x184 0x07  /* P9_24 15  OUTPUT MODE7 - A11 */
-				0x180 0x07  /* P9_26 14  OUTPUT MODE7 - A12 */
-				0x1a4 0x07  /* P9_27 115 OUTPUT MODE7 - A13 */
-				0x090 0x07  /* P8_07 66  OUTPUT MODE7 - A14 */
+				0x150 0x07  /* P9_22 2   OUTPUT MODE7 - A0  */
+				0x154 0x07  /* P9_21 3   OUTPUT MODE7 - A1  */
+				0x158 0x07  /* P9_18 4   OUTPUT MODE7 - A2  */
+				0x15c 0x07  /* P9_17 5   OUTPUT MODE7 - A3  */
+				0x04c 0x07  /* P9_16 51  OUTPUT MODE7 - A4  */
+				0x040 0x07  /* P9_15 48  OUTPUT MODE7 - A5  */
+				0x048 0x07  /* P9_14 50  OUTPUT MODE7 - A6  */
+				0x074 0x07  /* P9_13 31  OUTPUT MODE7 - A7  */
+				0x044 0x07  /* P9_23 49  OUTPUT MODE7 - A8  */
+				0x184 0x07  /* P9_24 15  OUTPUT MODE7 - A9  */
+				0x1a4 0x07  /* P9_27 115 OUTPUT MODE7 - A10 */
+				0x180 0x07  /* P9_26 14  OUTPUT MODE7 - A11 */
+				0x078 0x07  /* P9_12 60  OUTPUT MODE7 - A12 */
+				0x090 0x07  /* P8_07 66  OUTPUT MODE7 - A13 */
+				0x070 0x07  /* P9_11 30  OUTPUT MODE7 - A14 */
 				
 				/* A15 unused for a 28C256, but is reserved */
 				0x094 0x07  /* P8_08 67  OUTPUT MODE7 - A15 */
+
+				0x09c 0x07  /* P8_09 69  OUTPUT MODE7 - D7  */
+				0x098 0x07  /* P8_10 68  OUTPUT MODE7 - D6  */
+				0x034 0x07  /* P8_11 45  OUTPUT MODE7 - D5  */
+				0x030 0x07  /* P8_12 44  OUTPUT MODE7 - D4  */
+				0x024 0x07  /* P8_13 23  OUTPUT MODE7 - D3  */
+				0x028 0x07  /* P8_14 26  OUTPUT MODE7 - D2  */
+				0x03c 0x07  /* P8_15 47  OUTPUT MODE7 - D1  */
+				0x038 0x07  /* P8_16 46  OUTPUT MODE7 - D0  */
+
+				0x02c 0x07  /* P8_17 27  OUTPUT MODE7 - OE  */
+				0x08c 0x07  /* P8_18 65  OUTPUT MODE7 - WE  */
+				0x020 0x07  /* P8_19 22  OUTPUT MODE7 - CE  */
 			>;
 		  };
              };
