@@ -10,12 +10,12 @@ void TestWrite()
 	
 	//writer.DisableDataProtection();
 	
-	for (unsigned short address = 0; address < 0x7FFF; address++) {
-		writer.WriteByte(address, static_cast<unsigned char>(0));
-		//std::cout << std::hex << address << ": "
-		//	<< ((~address) & 0xFF) << " ";
+	for (unsigned short address = 0; address <= 0x7FFF; address++) {
+		writer.WriteByte(address, static_cast<unsigned char>((~address) & 0xFF));
+		std::cout << std::hex << address << ": "
+			<< ((~address) & 0xFF) << " ";
 		if ((address % 16) == 0) {
-			//std::cout << "\n";
+			std::cout << "\n";
 		}
 	}
 		
