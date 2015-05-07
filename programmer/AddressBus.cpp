@@ -5,7 +5,7 @@
 #include "AddressBus.h"
 
 const std::array<unsigned char, 16> AddressBus::m_address_gpio =
-	{{30, 60, 31, 50, 48, 51, 5, 4, 3, 2, 49, 15, 14, 115, 66, 67}};
+	{{2, 3, 4, 5, 51, 48, 50, 31, 49, 15, 115, 14, 60, 66, 30, 67}};
 
 
 AddressBus::AddressBus()

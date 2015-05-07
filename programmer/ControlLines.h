@@ -16,9 +16,9 @@ public:
 	void DisableAll();
 
 private:
-	const unsigned short m_ce_gpio = 27;
+	const unsigned short m_ce_gpio = 22;
 	const unsigned short m_we_gpio = 65;
-	const unsigned short m_oe_gpio = 22;
+	const unsigned short m_oe_gpio = 27;
 	
 	PIN_VALUE m_chip_enable = HIGH;
 	PIN_VALUE m_write_enable = HIGH;

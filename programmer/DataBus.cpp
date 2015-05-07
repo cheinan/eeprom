@@ -9,7 +9,7 @@
 #include "Exception.h"
 
 const std::array<unsigned char, 8> DataBus::m_data_gpio =
-	{{69, 68, 45, 44, 23, 26, 47, 46}};
+	{{46, 47, 26, 23, 44, 45, 68, 69}};
 
 
 DataBus::DataBus(bool is_data_out) : m_is_data_out(is_data_out)
