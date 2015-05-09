@@ -4,3 +4,4 @@ echo "Deploying EEPROM overlay"
 
 cp EEPROM-Prog-00A0.dtbo /lib/firmware/
 echo EEPROM-Prog > /sys/devices/bone_capemgr.9/slots
+
